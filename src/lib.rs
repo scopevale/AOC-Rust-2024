@@ -116,7 +116,7 @@ pub fn is_line_safe(nums: &[i64]) -> bool {
 /// AOC 2024 - Day 04
 
 /// Parse a rectangular char grid from a &str (all lines must have equal length).
-fn parse_grid(input: &str) -> Result<Vec<Vec<char>>, String> {
+pub fn parse_grid(input: &str) -> Result<Vec<Vec<char>>, String> {
     let lines: Vec<&str> = input.lines().collect();
     if lines.is_empty() {
         return Err("empty input".into());
