@@ -196,6 +196,18 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_part_one() {
+        let result = part_one(&advent_of_code::template::read_file("examples", DAY));
+        assert_eq!(result, Some(41));
+    }
+
+    #[test]
+    fn test_part_two() {
+        let result = part_two(&advent_of_code::template::read_file("examples", DAY));
+        assert_eq!(result, Some(6));
+    }
+
+    #[test]
     fn tiny_exit() {
         // Starts facing up at (1,1); will turn right on the top edge and eventually exit.
         let input = "\
@@ -203,7 +215,7 @@ mod tests {
 .^#..
 .....";
         let n = part_one(input);
-        assert!(n > 0);
+        assert!(n > Some(0));
     }
 
     #[test]
@@ -218,109 +230,3 @@ mod tests {
         let _ = part_two(input);
     }
 }
-
-// #[derive(Clone, Copy, Debug)]
-// enum Direction {
-//     North,
-//     South,
-//     East,
-//     West,
-// }
-//
-// #[derive(Clone, Copy, Debug)]
-// struct Point(u64, u64);
-//
-// #[derive(Clone, Copy, Debug)]
-// struct Position {
-//     x: u64,
-//     y: u64,
-//     dir: Direction,
-//     off_grid: bool,
-// }
-//
-// impl Position {
-//     fn new(x: u64, y: u64) -> Self {
-//         Self {
-//             x,
-//             y,
-//             dir: Direction::North,
-//             off_grid: false,
-//         }
-//     }
-//
-//     fn change_dir(&mut self) {
-//         self.dir = match self.dir {
-//             Direction::North => Direction::East,
-//             Direction::East => Direction::South,
-//             Direction::South => Direction::West,
-//             Direction::West => Direction::North,
-//         };
-//     }
-//
-//     fn move_forward(&mut self, bounds: (u64, u64)) {
-//         let newpos: Point = match self.dir {
-//             Direction::North => (self.x - 1, self.y),
-//             Direction::East => (self.x, self.y + 1),
-//             Direction::South => (self.x + 1, self.y),
-//             Direction::West => (self.x, self.y - 1),
-//         };
-//         if newpos.0 <= bounds.0 && newpos.0 >= 0u64 {
-//             self.x = newpos.0;
-//         } else {
-//             self.off_grid = true;
-//         }
-//         if newpos.1 <= bounds.1 && newpos.1 >= 0u64 {
-//             self.y = newpos.1;
-//         } else {
-//             self.off_grid = true;
-//         }
-//     }
-// }
-//
-// pub fn part_one(input: &str) -> Option<u64> {
-//     let grid = parse_grid(&input).unwrap();
-//
-//     let start_pos: Option<Point> = find_char(&grid, '^');
-//     let position = Position::new(start_pos.unwrap().0, start_pos.unwrap().1);
-//     dbg!(start_pos);
-//     let mut _positions = 0u64;
-//
-//     Some(_positions)
-// }
-//
-// fn is_obstacle_ahead(pos: Position, grid: Vec<Vec<char>>) -> bool {
-//     let nextpos = match pos.dir {
-//         Direction::North
-//     }
-//
-// }
-//
-// fn find_char(grid: &[Vec<char>], target: char) -> Option<Point> {
-//     for (r, row) in grid.iter().enumerate() {
-//         if let Some(c) = row.iter().position(|&ch| ch == target) {
-//             return Some(Point(r as u64, c as u64));
-//         }
-//     }
-//     None
-// }
-//
-// pub fn part_two(input: &str) -> Option<u64> {
-//     None
-// }
-//
-// #[cfg(test)]
-// mod tests {
-//     use super::*;
-//
-//     #[test]
-//     fn test_part_one() {
-//         let result = part_one(&advent_of_code::template::read_file("examples", DAY));
-//         assert_eq!(result, None);
-//     }
-//
-//     #[test]
-//     fn test_part_two() {
-//         let result = part_two(&advent_of_code::template::read_file("examples", DAY));
-//         assert_eq!(result, None);
-//     }
-// }
